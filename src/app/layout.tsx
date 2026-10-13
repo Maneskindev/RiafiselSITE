@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Manrope } from "next/font/google";
-import { SITE } from "@/lib/site";
+import { BASE, SITE } from "@/lib/site";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import Reveal from "@/components/Reveal";
@@ -27,7 +27,7 @@ export const viewport: Viewport = { themeColor: "#07060d", colorScheme: "dark" }
 
 // Runs before first paint: the intro plays on every full load of the home page (not for deep links or reduced motion).
 const introScript = `(function(){var d=document.documentElement;
-var on=location.pathname==='/'&&!location.hash&&!matchMedia('(prefers-reduced-motion: reduce)').matches;
+var on=location.pathname==='${BASE}/'&&!location.hash&&!matchMedia('(prefers-reduced-motion: reduce)').matches;
 d.dataset.intro=on?'playing':'done';if(on){history.scrollRestoration='manual';scrollTo(0,0)}})()`;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

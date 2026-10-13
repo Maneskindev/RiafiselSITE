@@ -3,7 +3,7 @@ import Link from "next/link";
 import GemStage from "@/components/GemStage";
 import ServerStatus from "@/components/ServerStatus";
 import { Gem, cssVars, gemColor } from "@/components/ui";
-import { ARENAS, FEATURES, SITE } from "@/lib/site";
+import { ARENAS, BASE, FEATURES, SITE } from "@/lib/site";
 
 export default function Home() {
   return (
@@ -12,7 +12,7 @@ export default function Home() {
       <main>
         <section className="hero">
           <div className="hero-inner">
-            <img id="hero-logo" className="hero-logo" src="/logo.webp" alt="Reafisel" width={640} height={640} fetchPriority="high" />
+            <img id="hero-logo" className="hero-logo" src={`${BASE}/logo.webp`} alt="Reafisel" width={640} height={640} fetchPriority="high" />
             <h1 className="reveal-intro">Free-for-all PvP з силами гемів</h1>
             <p className="hero-sub reveal-intro">
               8 гемів, 4 арени, які змінюються кожні 30 хвилин, дуелі, аірдропи і кейси.
@@ -46,7 +46,7 @@ export default function Home() {
           <div className="arena-grid">
             {ARENAS.map((a) => (
               <Link key={a.id} href={`/arenas/#${a.id}`} className="arena" style={cssVars({ "--c": a.color })} data-reveal>
-                <img className="px" src={`/arenas/${a.id}.png`} alt={`${a.name} згори`} width={560} height={560} loading="lazy" />
+                <img className="px" src={`${BASE}/arenas/${a.id}.png`} alt={`${a.name} згори`} width={560} height={560} loading="lazy" />
                 <span className="arena-name">{a.name}</span>
               </Link>
             ))}

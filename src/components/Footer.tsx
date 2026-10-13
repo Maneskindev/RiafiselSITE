@@ -1,12 +1,12 @@
 import Link from "next/link";
-import { SITE } from "@/lib/site";
+import { BASE, SITE } from "@/lib/site";
 
 export default function Footer() {
   return (
     <footer className="footer">
       <div className="footer-brand">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/logo-128.png" alt="" width={48} height={48} loading="lazy" />
+        <img src={`${BASE}/logo-128.png`} alt="" width={48} height={48} loading="lazy" />
         <div>
           <b>Reafisel</b>
           <span>{SITE.ip}</span>

@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
-import { GEMS } from "@/lib/site";
+import { BASE, GEMS } from "@/lib/site";
 
 // One WebGL scene drives both the intro and the hero, so there is never a cut between them.
 const FOV = 40;
@@ -219,7 +219,7 @@ export default function GemStage() {
     let hovered = -1;
     const onClick = (e: MouseEvent) => {
       if (hovered < 0 || (e.target as Element).closest("a,button,input,summary,details,[data-no-gem]")) return;
-      location.href = `/gems/#${GEMS[hovered].id}`;
+      location.href = `${BASE}/gems/#${GEMS[hovered].id}`;
     };
     addEventListener("pointermove", onMove, { passive: true });
     document.addEventListener("pointerleave", onLeave);
@@ -245,7 +245,7 @@ export default function GemStage() {
       start = performance.now() - T_HOLD * 1000;
     };
 
-    Promise.all(GEMS.map((g) => loadPixels(`/gems/${g.id}.png`)))
+    Promise.all(GEMS.map((g) => loadPixels(`${BASE}/gems/${g.id}.png`)))
       .then((images) => {
         images.forEach((img, i) => {
           const geo = voxelGeometry(img);
@@ -419,7 +419,7 @@ export default function GemStage() {
       <div ref={hostRef} />
       <div ref={overlayRef} className="intro" data-phase="load" aria-hidden="true">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img ref={logoRef} className="intro-logo" src="/logo.webp" alt="" width={640} height={640} fetchPriority="high" />
+        <img ref={logoRef} className="intro-logo" src={`${BASE}/logo.webp`} alt="" width={640} height={640} fetchPriority="high" />
         <div ref={flashRef} className="flash" />
         <button type="button" className="btn btn-stone skip" onClick={() => skipRef.current()}>Пропустити</button>
       </div>

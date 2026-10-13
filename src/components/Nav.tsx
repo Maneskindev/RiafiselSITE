@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import ServerStatus from "./ServerStatus";
+import { BASE } from "@/lib/site";
 
 const LINKS = [
   ["Геми", "/gems/"],
@@ -22,7 +23,7 @@ export default function Nav() {
     <header className="nav reveal-intro">
       <Link href="/" className="nav-brand">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/logo-128.png" alt="" width={36} height={36} />
+        <img src={`${BASE}/logo-128.png`} alt="" width={36} height={36} />
         <span>Reafisel</span>
       </Link>
       <nav className={`nav-links${open ? " open" : ""}`} aria-label="Головне меню">

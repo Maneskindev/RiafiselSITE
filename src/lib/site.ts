@@ -1,8 +1,11 @@
 // Everything the site says about the server lives here.
 
+// Path prefix for raw asset URLs (next/link adds it on its own).
+export const BASE = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
 export const SITE = {
   name: "Reafisel",
-  url: process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : "http://localhost:3000",
+  url: process.env.SITE_URL || "http://localhost:3000",
   ip: "play.reafisel.net",
   version: "Java 1.21+",
 };

@@ -2,7 +2,7 @@
 
 /* eslint-disable @next/next/no-img-element */
 import { useEffect, useState } from "react";
-import { SITE } from "@/lib/site";
+import { BASE, SITE } from "@/lib/site";
 
 type Status = { online: boolean; players: number; max: number } | null;
 
@@ -49,7 +49,7 @@ export default function ServerStatus({ compact = false }: { compact?: boolean })
   const state = status === null ? "wait" : status.online ? "on" : "off";
   return (
     <button type="button" className="server" onClick={copy} aria-label={`Скопіювати IP сервера ${SITE.ip}`}>
-      <img src="/logo-128.png" alt="" width={64} height={64} />
+      <img src={`${BASE}/logo-128.png`} alt="" width={64} height={64} />
       <span className="server-body">
         <span className="server-top">
           <b>Reafisel</b>
